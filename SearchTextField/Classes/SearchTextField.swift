@@ -526,13 +526,6 @@ open class SearchTextField: UITextField {
                     direction = .down
                 }
             }
-            redrawSearchTableView()
-        } else {
-            if self.center.y + theme.cellHeight > UIApplication.shared.keyWindow!.frame.size.height {
-                direction = .up
-            } else {
-                direction = .down
-            }
         }
     }
 }
