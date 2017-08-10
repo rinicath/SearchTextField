@@ -77,6 +77,11 @@ open class SearchTextField: UITextField {
     /// Set your custom set of attributes in order to highlight the string found in each item
     open var highlightAttributes: [String: AnyObject] = [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 10)]
     
+    /// Set an array of SearchTextFieldItem's to be used for suggestions
+    open func filteredItems(_ items: [SearchTextFieldItem]) {
+        filteredDataSource = items
+    }
+    
     /// Start showing the default loading indicator, useful for searches that take some time.
     open func showLoadingIndicator() {
         self.rightViewMode = .always
@@ -135,7 +140,18 @@ open class SearchTextField: UITextField {
     fileprivate var filteredResults = [SearchTextFieldItem]()
     fileprivate var filterDataSource = [SearchTextFieldItem]() {
         didSet {
-            filter(forceShowAll: false)
+            filter(forceShowAll: false, with: filterDataSource)
+            buildSearchTableView()
+            
+            if startVisibleWithoutInteraction {
+                textFieldDidChange()
+            }
+        }
+    }
+    
+    fileprivate var filteredDataSource = [SearchTextFieldItem]() {
+        didSet {
+            filter(forceShowAll: true, with: filteredDataSource)
             buildSearchTableView()
             
             if startVisibleWithoutInteraction {
@@ -358,11 +374,11 @@ open class SearchTextField: UITextField {
             clearResults()
             tableView?.reloadData()
             if startVisible || startVisibleWithoutInteraction {
-                filter(forceShowAll: true)
+                filter(forceShowAll: true, with: (filterDataSource.count > 0 ? filterDataSource: filteredDataSource))
             }
             self.placeholderLabel?.text = ""
         } else {
-            filter(forceShowAll: false)
+            filter(forceShowAll: false, with: (filterDataSource.count > 0 ? filterDataSource: filteredDataSource))
             prepareDrawTableResult()
         }
         
@@ -372,7 +388,7 @@ open class SearchTextField: UITextField {
     open func textFieldDidBeginEditing() {
         if (startVisible || startVisibleWithoutInteraction) && text!.isEmpty {
             clearResults()
-            filter(forceShowAll: true)
+            filter(forceShowAll: true, with: (filterDataSource.count > 0 ? filterDataSource: filteredDataSource))
         }
         placeholderLabel?.attributedText = nil
     }
@@ -410,16 +426,16 @@ open class SearchTextField: UITextField {
         }
     }
     
-    fileprivate func filter(forceShowAll addAll: Bool) {
+    fileprivate func filter(forceShowAll addAll: Bool, with dataSource: [SearchTextFieldItem]) {
         clearResults()
         
         if text!.characters.count < minCharactersNumberToStartFiltering {
             return
         }
         
-        for i in 0 ..< filterDataSource.count {
+        for i in 0 ..< dataSource.count {
             
-            var item = filterDataSource[i]
+            var item = dataSource[i]
             
             if !inlineMode {
                 // Find text in title and subtitle

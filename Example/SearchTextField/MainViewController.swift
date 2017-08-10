@@ -98,7 +98,7 @@ class MainViewController: UITableViewController {
         }
         
         // You can force the results table appear always top
-        acronymTextField.direction = .up
+        acronymTextField.direction = .auto
         
         // Update data source when the user stops typing
         acronymTextField.userStoppedTypingHandler = {
@@ -110,7 +110,7 @@ class MainViewController: UITableViewController {
                     
                     self.filterAcronymInBackground(criteria) { results in
                         // Set new items to filter
-                        self.acronymTextField.filterItems(results)
+                        self.acronymTextField.filteredItems(results)
                         
                         // Stop loading indicator
                         self.acronymTextField.stopLoadingIndicator()
