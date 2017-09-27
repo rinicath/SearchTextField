@@ -599,6 +599,10 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
         
         clearResults()
     }
+    
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat{
+        return theme.cellHeight
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////
