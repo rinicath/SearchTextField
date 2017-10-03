@@ -603,6 +603,14 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
     open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat{
         return theme.cellHeight
     }
+    
+    //Added by Prathap: Provides a way to deal with items..
+    public func item(atIndex index: Int) -> SearchTextFieldItem? {
+        if index < filteredResults.count {
+            return filteredResults[index]
+        }
+        return nil
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////
