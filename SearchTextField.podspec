@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SearchTextField"
-  s.version          = “1.2.0”
+  s.version          = "1.2.0"
   s.summary          = "SearchTextField extends UITextField allowing you to add the autocomplete feature in a really easy way"
 
 # This description is used to generate tags and improve search results.
@@ -18,11 +18,9 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-
     Even though creating the autocomplete feature over a UITextField is not a big issue, dealing with screen rotation, keyboard position, the look and feel, etc, makes this task harder than expected.
     The idea behind SearchTextField is to help you adding this feature in just a few lines of code.
 SearchTextField supports two different modes: the classic dropdown list (by default) and the inline mode perfect for autocomplete email domains as an example.
-
                        DESC
 
   s.homepage         = "https://github.com/apasccon/SearchTextField"
@@ -33,6 +31,8 @@ SearchTextField supports two different modes: the classic dropdown list (by defa
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
+
+  s.user_target_xcconfig = { 'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => '$(inherited)' }
 
   s.source_files = 'SearchTextField/Classes/**/*'
   #s.resource_bundles = {
