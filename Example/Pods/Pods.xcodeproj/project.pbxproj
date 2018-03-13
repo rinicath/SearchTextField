@@ -12,6 +12,8 @@
 		71F6C4C67F39633AD00BFD3E7C383A52 /* SearchTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6252C77F38E153B96180DBE27E5994EB /* SearchTextField-dummy.m */; };
 		72065C734B8356A390F80F1662EC24DE /* Pods-SearchTextField_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4315DF0B7E1FFBE365C7043A45023E64 /* Pods-SearchTextField_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		762659F60E4D1F43A330187BE6EA148A /* Pods-SearchTextField_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 803F0411D77AF365A47A1A8EAF996DF4 /* Pods-SearchTextField_Example-dummy.m */; };
+		8B65E971205816A000293E41 /* ViewAllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B65E970205816A000293E41 /* ViewAllTableViewCell.swift */; };
+		8B65E972205816A000293E41 /* ViewAllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B65E970205816A000293E41 /* ViewAllTableViewCell.swift */; };
 		98D93CF3A15EE793B005FDAD1E298256 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		BEAF6B86F86F7A2F8F69B115E1A105C3 /* SearchTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CC67CD67D641F74F6EEFE0A8E46FED /* SearchTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -39,6 +41,7 @@
 		71CC67CD67D641F74F6EEFE0A8E46FED /* SearchTextField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-umbrella.h"; sourceTree = "<group>"; };
 		803F0411D77AF365A47A1A8EAF996DF4 /* Pods-SearchTextField_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SearchTextField_Example-dummy.m"; sourceTree = "<group>"; };
 		88AE0C37FEA33591A8EE8A637A8831A4 /* Pods-SearchTextField_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SearchTextField_Example-frameworks.sh"; sourceTree = "<group>"; };
+		8B65E970205816A000293E41 /* ViewAllTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllTableViewCell.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A52CBC2367A726D3B804E8FA5F53BA83 /* SearchTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SearchTextField.modulemap; sourceTree = "<group>"; };
 		AA55A6999C12CB3B13F2BBC8F2522C68 /* Pods-SearchTextField_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SearchTextField_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				160ECF103247551CBC37190BB6EC53E6 /* SearchTextField.swift */,
+				8B65E970205816A000293E41 /* ViewAllTableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -249,6 +253,9 @@
 					940DEB8A330B442C8CDDB6B1CC001414 = {
 						LastSwiftMigration = 0900;
 					};
+					BFAF6D30694C1DB8654DFF52BF9F5268 = {
+						LastSwiftMigration = 0910;
+					};
 				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -274,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B65E972205816A000293E41 /* ViewAllTableViewCell.swift in Sources */,
 				71F6C4C67F39633AD00BFD3E7C383A52 /* SearchTextField-dummy.m in Sources */,
 				62FB0A7E6D8EAC01D31276C00A85E520 /* SearchTextField.swift in Sources */,
 			);
@@ -283,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B65E971205816A000293E41 /* ViewAllTableViewCell.swift in Sources */,
 				762659F60E4D1F43A330187BE6EA148A /* Pods-SearchTextField_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA55A6999C12CB3B13F2BBC8F2522C68 /* Pods-SearchTextField_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -520,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D9806B9BEF3A2D3D4675BD74FE170306 /* Pods-SearchTextField_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

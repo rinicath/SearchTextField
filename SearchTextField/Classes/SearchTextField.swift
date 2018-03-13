@@ -221,7 +221,7 @@ open class SearchTextField: UITextField {
             shadowView.layer.shadowColor = UIColor.black.cgColor
             shadowView.layer.shadowOffset = CGSize.zero
             shadowView.layer.shadowOpacity = 1
-            
+            //self.tableView?.register(ViewAllTableViewCell.self as AnyClass, forCellReuseIdentifier: "VCell")
             self.window?.addSubview(tableView)
         } else {
             tableView = UITableView(frame: CGRect.zero)
@@ -600,6 +600,34 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        if(filteredResults[(indexPath as NSIndexPath).row].title == "View All Results"){
+            
+            var cell:ViewAllTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "VCell", for: indexPath) as? ViewAllTableViewCell
+            
+            if cell == nil {
+                
+                cell = ViewAllTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "VCell")
+                
+            }
+            
+            cell?.setUpVCell()
+            
+            cell!.viewAllLabel?.font = theme.font
+            
+            cell!.viewAllLabel?.textColor = theme.fontColor
+            
+            let viewAllLabel:UILabel = cell?.contentView.viewWithTag(3) as! UILabel
+            
+            viewAllLabel.text = "View All Results"
+            
+            addDashedBottomBorder(to: cell!)
+            
+            return cell!
+            
+        }
+        
         var cell = tableView.dequeueReusableCell(withIdentifier: SearchTextField.cellIdentifier)
         
         if cell == nil {
@@ -625,7 +653,7 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
         cell!.imageView?.image = filteredResults[(indexPath as NSIndexPath).row].image
         
         cell!.selectionStyle = .none
-        if (cell?.detailTextLabel?.text == "View All Results") {
+        if (cell?.textLabel?.text == "View All Results") {
             addDashedBottomBorder(to: cell!)
         }
         
