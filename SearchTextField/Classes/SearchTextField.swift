@@ -221,7 +221,7 @@ open class SearchTextField: UITextField {
             shadowView.layer.shadowColor = UIColor.black.cgColor
             shadowView.layer.shadowOffset = CGSize.zero
             shadowView.layer.shadowOpacity = 1
-            //self.tableView?.register(ViewAllTableViewCell.self as AnyClass, forCellReuseIdentifier: "VCell")
+            self.tableView?.register(ViewAllTableViewCell.self as AnyClass, forCellReuseIdentifier: "VCell")
             self.window?.addSubview(tableView)
         } else {
             tableView = UITableView(frame: CGRect.zero)
