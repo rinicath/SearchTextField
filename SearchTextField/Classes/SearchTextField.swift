@@ -519,6 +519,47 @@ open class SearchTextField: UITextField {
         }
     }
     
+    
+    //update
+    func addDashedBottomBorder(to cell: UITableViewCell) {
+        
+        
+        
+        let color = UIColor.darkGray.cgColor
+        
+        
+        
+        let shapeLayer:CAShapeLayer = CAShapeLayer()
+        
+        let frameSize = cell.frame.size
+        
+        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: 0)
+        
+        
+        
+        shapeLayer.bounds = shapeRect
+        
+        shapeLayer.position = CGPoint(x: frameSize.width/2, y: 5)
+        
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        
+        shapeLayer.strokeColor = color
+        
+        shapeLayer.lineWidth = 2.0
+        
+        shapeLayer.lineJoin = kCALineJoinRound
+        
+        shapeLayer.lineDashPattern = [2,4]
+        
+        shapeLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: shapeRect.height, width: shapeRect.width, height: 0), cornerRadius: 0).cgPath
+        
+        
+        
+        cell.layer.addSublayer(shapeLayer)
+        
+    }
+    
+
     // MARK: - Prepare for draw table result
     
     fileprivate func prepareDrawTableResult() {
@@ -584,6 +625,9 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
         cell!.imageView?.image = filteredResults[(indexPath as NSIndexPath).row].image
         
         cell!.selectionStyle = .none
+        if (cell?.detailTextLabel?.text == "View All Results") {
+            addDashedBottomBorder(to: cell!)
+        }
         
         return cell!
     }
