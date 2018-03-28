@@ -590,7 +590,7 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
             let shapeLayer = CAShapeLayer()
             shapeLayer.strokeColor = UIColor.gray.cgColor
             shapeLayer.lineWidth = 1
-            shapeLayer.lineDashPattern = [2, 3]
+            shapeLayer.lineDashPattern = [5, 1]
             
             let path = CGMutablePath()
             let x = CGFloat((cell?.contentView.frame.width)!)
