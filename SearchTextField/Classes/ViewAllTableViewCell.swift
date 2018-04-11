@@ -27,10 +27,10 @@ class ViewAllTableViewCell: UITableViewCell {
         
         
         
-        viewAllLabel = UILabel(frame: CGRect(x:120, y:0, width:250, height:50))
-        
+        viewAllLabel = UILabel(frame: CGRect(x:0, y:0, width:250, height:50))
+        viewAllLabel.textAlignment = NSTextAlignment.center
         self.contentView.addSubview(viewAllLabel)
-        
+        viewAllLabel.center = self.contentView.center
         viewAllLabel.tag = 3;
         
         
